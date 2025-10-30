@@ -6,6 +6,10 @@ export const useStore = create(
           (set)=>({
           selectedComponent: null,
           setSelectedComponent: (component) => set({ selectedComponent: component }),
+           
+          active:'nocode',
+          setActive:(currentActive) => set({active:currentActive}),
+
      }),
      {
         name: "component-storage",   

@@ -39,7 +39,7 @@ const Preview = () => {
 
   return (
     <div className="md:w-1/2 h-130">
-      <iframe ref={iframeRef} className="w-full h-full bg-[#212121] rounded-lg border-0" />
+      <iframe ref={iframeRef} className="w-full h-full bg-[#212121] rounded-lg border-0 flex justify-center items-center" />
     </div>
   );
 };

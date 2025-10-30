@@ -13,7 +13,7 @@ const Home = () => {
     }
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center p-10'>
+    <div className='min-h-screen w-full flex flex-col items-center justify-center p-10'>
        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {components.map((data)=>(
               <div onClick={() => buttonHandler(data)} className='rounded-3xl border-b-blue-200 border items-center flex flex-col justify-center bg-[#0f0f0f] text-neutral-50 p-3' key={data.id}>
