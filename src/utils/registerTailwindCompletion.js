@@ -15,7 +15,7 @@ export function registerTailwindCompletion(monaco) {
           startLineNumber: position.lineNumber,
           startColumn: 1,
           endLineNumber: position.lineNumber,
-          endColumn: position.column,
+          endColumn: position.column, 
         });
 
         const match = textUntilPosition.match(/class(Name)?=["'][^"']*$/);
