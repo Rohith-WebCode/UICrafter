@@ -1,7 +1,6 @@
-// src/components/CodeEditor.jsx
 import { Editor } from "@monaco-editor/react";
 import { useStore } from "../store/useStore";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { registerTailwindCompletion } from "../utils/registerTailwindCompletion";
 
 const CodeEditor = () => {
@@ -10,33 +9,41 @@ const CodeEditor = () => {
   const [code, setCode] = useState(selectedComponent?.code || "");
 
   useEffect(() => {
-    setCode(selectedComponent?.code || "");
+    if (selectedComponent?.code !== code) {
+      setCode(selectedComponent?.code || "");
+    }
   }, [selectedComponent]);
 
-  const handleChange = (value) => {
-    setCode(value);
-    setSelectedComponent({ ...selectedComponent, code: value });
-  };
+  const handleChange = useCallback(
+    (value) => {
+      setCode(value);
+      if (selectedComponent) {
+        setSelectedComponent({ ...selectedComponent, code: value });
+      }
+    },
+    [selectedComponent, setSelectedComponent]
+  );
 
-  const handleEditorMount = (editor, monaco) => {
-    registerTailwindCompletion(monaco);
-  };
+  const handleEditorMount = useCallback(async (editor, monaco) => {
+    await registerTailwindCompletion(monaco);
+  }, []);
 
   return (
-    <div className="w-full h-115 overflow-hidden">
+    <div className="w-full h-100 overflow-hidden border border-gray-700 rounded-lg bg-[#1e1e1e]">
       <Editor
-        height="90%"
+        height="100%"
         language="html"
         theme="vs-dark"
         value={code}
         onMount={handleEditorMount}
         onChange={handleChange}
-        className="rounded-lg overflow-hidden border w-full h-full"
         options={{
           fontSize: 15,
           wordWrap: "on",
           minimap: { enabled: false },
           padding: { top: 20 },
+          scrollBeyondLastLine: false,
+          automaticLayout: true,
         }}
       />
     </div>

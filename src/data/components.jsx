@@ -111,3 +111,245 @@ export const components = [
     `,
   },
 ];
+
+
+
+export const schemaComponents = [
+  {
+    id: "button",
+    name: "Button",
+    category: "UI Elements",
+    icon: <RxButton/>,
+    editable: true,
+    props: {
+      text: "Click Me",
+      className:
+        "px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition",
+    },
+    structure: {
+      type: "button",
+      className: "{{className}}",
+      children: ["{{text}}"],
+    },
+  },
+
+  {
+    id: "card",
+    name: "Card",
+    category: "Layout",
+    icon: <BiCreditCardFront/>,
+    editable: true,
+    props: {
+      title: "Card Title",
+      description:
+        "This is a clean and minimal card design that looks great in dashboards or portfolios.",
+      buttonText: "Learn More",
+      className:
+        "max-w-sm p-6 bg-white border border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300",
+    },
+    structure: {
+      type: "div",
+      className: "{{className}}",
+      children: [
+        {
+          type: "div",
+          className: "mb-2 text-2xl font-semibold text-gray-900",
+          children: ["{{title}}"],
+        },
+        {
+          type: "p",
+          className: "mb-4 text-gray-600 text-sm leading-relaxed",
+          children: ["{{description}}"],
+        },
+        {
+          type: "button",
+          className:
+            "px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition",
+          children: ["{{buttonText}}"],
+        },
+      ],
+    },
+  },
+
+  {
+    id: "alert",
+    name: "Alert",
+    category: "Feedback",
+    icon: <IoIosAlert/>,
+    editable: true,
+    props: {
+      text: "This is a warning alert — check it out!",
+      className:
+        "flex items-center gap-3 p-4 mb-4 text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50",
+    },
+    structure: {
+      type: "div",
+      className: "{{className}}",
+      children: [
+        {
+          type: "svg",
+          className: "shrink-0 w-5 h-5",
+        },
+        {
+          type: "span",
+          className: "text-sm font-medium",
+          children: ["{{text}}"],
+        },
+      ],
+    },
+  },
+
+  {
+    id: "input",
+    name: "Input Field",
+    category: "Forms",
+    icon: <BsFillFileTextFill/>,
+    editable: true,
+    props: {
+      label: "Email",
+      placeholder: "Enter your email",
+      className:
+        "px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500",
+    },
+    structure: {
+      type: "div",
+      className: "flex flex-col gap-2 w-64",
+      children: [
+        {
+          type: "label",
+          className: "text-sm font-medium text-gray-700",
+          children: ["{{label}}"],
+        },
+        {
+          type: "input",
+          props: {
+            type: "email",
+            placeholder: "{{placeholder}}",
+            className: "{{className}}",
+          },
+        },
+      ],
+    },
+  },
+
+  {
+    id: "checkbox",
+    name: "Checkbox",
+    category: "Forms",
+    icon: <IoMdCheckbox/>,
+    editable: true,
+    props: {
+      text: "Accept Terms & Conditions",
+      className:
+        "flex items-center space-x-2 cursor-pointer text-gray-700 text-sm",
+      inputClass:
+        "w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500",
+    },
+    structure: {
+      type: "label",
+      className: "{{className}}",
+      children: [
+        {
+          type: "input",
+          props: {
+            type: "checkbox",
+            className: "{{inputClass}}",
+          },
+        },
+        {
+          type: "span",
+          children: ["{{text}}"],
+        },
+      ],
+    },
+  },
+
+  {
+    id: "toggle",
+    name: "Toggle Switch",
+    category: "Forms",
+    icon: <BiSolidToggleLeft/>,
+    editable: true,
+    props: {
+      className:
+        "relative inline-flex items-center cursor-pointer",
+      innerClass:
+        "w-12 h-7 bg-gray-300 rounded-full peer-focus:ring-4 peer-focus:ring-indigo-300 transition-all peer peer-checked:bg-indigo-600 after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-transform peer-checked:after:translate-x-5 shadow-inner",
+    },
+    structure: {
+      type: "label",
+      className: "{{className}}",
+      children: [
+        {
+          type: "input",
+          props: {
+            type: "checkbox",
+            className: "sr-only peer",
+          },
+        },
+        {
+          type: "div",
+          className: "{{innerClass}}",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "radio",
+    name: "Radio Buttons",
+    category: "Forms",
+    icon: <IoRadioButtonOnSharp/>,
+    editable: true,
+    props: {
+      option1: "Option 1",
+      option2: "Option 2",
+      className: "flex flex-col gap-2",
+      radioClass: "text-indigo-600 focus:ring-indigo-500",
+    },
+    structure: {
+      type: "div",
+      className: "{{className}}",
+      children: [
+        {
+          type: "label",
+          className: "inline-flex items-center",
+          children: [
+            {
+              type: "input",
+              props: {
+                type: "radio",
+                name: "options",
+                className: "{{radioClass}}",
+              },
+            },
+            {
+              type: "span",
+              className: "ml-2 text-gray-700 text-sm",
+              children: ["{{option1}}"],
+            },
+          ],
+        },
+        {
+          type: "label",
+          className: "inline-flex items-center",
+          children: [
+            {
+              type: "input",
+              props: {
+                type: "radio",
+                name: "options",
+                className: "{{radioClass}}",
+              },
+            },
+            {
+              type: "span",
+              className: "ml-2 text-gray-700 text-sm",
+              children: ["{{option2}}"],
+            },
+          ],
+        },
+      ],
+    },
+  },
+];

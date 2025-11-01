@@ -11,7 +11,7 @@ const Editors  = () => {
   console.log(Active);
   
   return (
-    <div className='md:w-1/2 h-130 bg-[#212121] rounded-lg border-0'>
+    <div className='w-full h-130 bg-[#212121] rounded-lg border-0'>
     <div className='px-6 py-2'>
       <div className='flex md:flex-row flex-col items-center py-2 justify-between'>
         <div className="flex gap-2 items-center">

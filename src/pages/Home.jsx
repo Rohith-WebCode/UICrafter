@@ -9,6 +9,7 @@ const Home = () => {
 
     const buttonHandler = (data)=> {
       setSelectedComponent(data)
+      
       navigate("/create")
     }
 
