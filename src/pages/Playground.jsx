@@ -7,8 +7,6 @@ const Playground = () => {
   console.log(selectedComponentId);
   
   const getComponentById   = useStore((state) => state.getComponentById)
-  console.log(getComponentById);
-  
 
  const selectedComponent = selectedComponentId
     ? getComponentById(selectedComponentId)
@@ -18,8 +16,8 @@ const Playground = () => {
    
   return (
     <div className='w-full h-full md:h-screen overflow-auto flex md:flex-row flex-col px-4 py-7 gap-4 bg-black'>
-      <Preview/>
-      <Editors/>
+      <Preview selectedComponent={selectedComponent} />
+      <Editors selectedComponent={selectedComponent}/>
     </div>
   )
 }
