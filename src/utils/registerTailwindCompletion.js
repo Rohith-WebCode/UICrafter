@@ -6,7 +6,6 @@ export async function registerTailwindCompletion(monaco) {
   if (registered) return;
   registered = true;
 
-  // ✅ Lazy-load Tailwind class list only once
   if (!cachedTailwindClasses) {
     const module = await import("../data/tailwindClasses.json");
     cachedTailwindClasses = module.default;

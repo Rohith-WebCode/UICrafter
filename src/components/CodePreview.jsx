@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useStore } from '../store/useStore';
 
-const CodePreview = () => {
+const   CodePreview = () => {
   const iframeRef = useRef(null);
   const selectedComponent = useStore((state) => state.selectedComponent);
 

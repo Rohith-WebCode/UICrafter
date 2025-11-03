@@ -32,7 +32,10 @@ const Editors = () => {
               </div>
             }
           >
-            {active === "code" ? <CodeEditor /> : <NoCodeEditor />}
+            {
+              active === 'code' ? <CodeEditor/> :  <NoCodeEditor />
+            }
+            
           </Suspense>
         </div>
       </div>

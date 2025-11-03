@@ -1,6 +1,7 @@
 import { Editor } from "@monaco-editor/react";
 import { useStore } from "../store/useStore";
 import { useEffect, useState, useCallback } from "react";
+import debounce from "lodash.debounce";
 import { registerTailwindCompletion } from "../utils/registerTailwindCompletion";
 
 const CodeEditor = () => {
@@ -14,19 +15,19 @@ const CodeEditor = () => {
     }
   }, [selectedComponent]);
 
-  const handleChange = useCallback(
-    (value) => {
-      setCode(value);
-      if (selectedComponent) {
-        setSelectedComponent({ ...selectedComponent, code: value });
-      }
-    },
-    [selectedComponent, setSelectedComponent]
-  );
+    const handleChange = useCallback(debounce((value) => {
+    if (!selectedComponent) return;
+    setSelectedComponent({ ...selectedComponent, code: value });
 
-  const handleEditorMount = useCallback(async (editor, monaco) => {
-    await registerTailwindCompletion(monaco);
-  }, []);
+    }, 200), [selectedComponent]);
+
+        const handleEditorMount = useCallback(async (editor, monaco) => {
+        if (!monaco.__tailwindRegistered) {
+            await registerTailwindCompletion(monaco);
+            monaco.__tailwindRegistered = true;
+        }
+        }, []);
+
 
   return (
     <div className="w-full h-100 overflow-hidden border border-gray-700 rounded-lg bg-[#1e1e1e]">
